@@ -1,0 +1,282 @@
+/* Codigo Css do app */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+
+:root {
+    --primaria:   #ffffff;
+    --secundaria: #c91717;
+    --fundo:      #ffffffee;
+    --gelo:       #d2d2d2; 
+    --text:       #000000;
+    --text2:      #FFF;
+
+}
+
+
+
+body {
+    background-color: var(--fundo);
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100dvh;
+
+    
+}
+
+
+
+.row, .row_ {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.row2  {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.max_width   {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.button {
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 10px;
+    color: var(--text2);
+    background-color: var(--secundaria);
+    border: 0;
+    font-weight: 800;
+    font-size: .8rem;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.button2 {
+    background-color: var(--primaria);
+    color: var(--text);
+    box-shadow: 0 0 5px -1px #000000;
+}
+
+.button3 {
+    background-color: #ffffff6e;
+    color: var(--text1);
+}
+
+
+.table {
+    max-height: calc(100dvh - 170px);
+    overflow: auto;
+    position: relative;
+
+}
+
+table .table_image {
+    max-width: 70px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .89rem;
+}
+
+table thead {
+    background-color: var(--secundaria);
+    font-weight: bold;
+    color: var(--text2);
+    position: sticky;
+    top: 0;
+    left: 0;
+}
+
+table td {
+    padding: 10px;
+}
+
+.imput_ {
+    padding: 10px;
+    border: 0;
+    border-radius: 10px;
+    outline: none;
+    width: 100%;
+}
+
+
+/* modal */
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+
+    width: 100vw;
+    height: 100dvh;
+
+    background-color: #00000034;
+    backdrop-filter: blur(10px);
+    display: none;
+
+    z-index: 100;
+
+    
+}
+
+.overlay.ative {
+    display: flex;
+}
+
+.modal {
+    background-color: #ffffff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1rem;
+
+    min-width: 200px;
+    border-radius: 10px;
+}
+
+
+/* finalizar pagamento */
+
+.grid_form_ {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+.entry {
+    width: 100%;
+}
+.entry span {
+    font-size: .8rem;
+}
+
+.entry .input {
+    border: 0;
+    padding: 10px;
+    outline: none;
+    background-color: #33333338;
+    border-radius: 10px;
+    width: 100%;
+    min-width: 130px;
+}
+
+
+
+.print_area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    background-color: #00000059;
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.print_area.ative {
+    display: flex;
+}
+
+.print_content {
+    background-color: var(--primaria);
+    width: 300px;
+    min-height: 200px;
+    border-radius: 10px;
+    padding: 10px;
+
+    max-height: 700px;
+    overflow: auto;
+   
+
+}
+
+.print_area {
+    font-size: .7rem;
+}
+
+.print_content .header_print {
+    text-align: center;
+    font-size: .8rem;
+}
+
+.print_content table {
+    font-size: .6rem;
+}
+
+.row_button div.button {
+    width: 100%;
+    flex: 1;
+}
+
+.box_image_preview {
+    width: 200px;
+    height: 120px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    height: 200px;
+}
+
+.box_image_preview .img_content_preview {
+    width: 100%;
+    max-width: 80%;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box_image_preview .img_content_preview i {
+    font-size: 4rem;
+}
+
+.box_image_preview .img_content_preview  img {
+    height: 100%;
+    max-width: 100%;
+}
+
+.box_image_preview .button {
+    width: 80%;
+}
+
