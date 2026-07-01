@@ -9,7 +9,7 @@
 
 :root {
     --primaria:   #ffffff;
-    --secundaria: #c91717;
+    --secundaria: #430fa3;
     --fundo:      #ffffffee;
     --gelo:       #d2d2d2; 
     --text:       #000000;
@@ -25,11 +25,14 @@ body {
     flex-direction: column;
     width: 100vw;
     height: 100dvh;
+    padding: 1rem;
 
     
 }
 
-
+.text_color {
+    color: var(--secundaria);
+}
 
 .row, .row_ {
     display: flex;
@@ -60,7 +63,7 @@ body {
 
 .max_width   {
     width: 100%;
-    max-width: 1300px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
@@ -71,9 +74,9 @@ body {
     color: var(--text2);
     background-color: var(--secundaria);
     border: 0;
-    font-weight: 800;
     font-size: .8rem;
     cursor: pointer;
+    font-weight: 600;
 
     display: flex;
     align-items: center;
@@ -83,19 +86,10 @@ body {
 
 .button2 {
     background-color: var(--primaria);
-    color: var(--text);
-    box-shadow: 0 0 5px -1px #000000;
+    color: var(--secundaria);
 }
-
-.button3 {
-    background-color: #ffffff6e;
-    color: var(--text1);
-}
-
 
 .table {
-    max-height: calc(100dvh - 170px);
-    overflow: auto;
     position: relative;
 
 }
@@ -111,16 +105,19 @@ table {
 }
 
 table thead {
-    background-color: var(--secundaria);
     font-weight: bold;
-    color: var(--text2);
+    color: var(--secundaria);
     position: sticky;
     top: 0;
     left: 0;
+    background-color: var(--fundo);
 }
 
 table td {
     padding: 10px;
+}
+table tr:nth-child(even){
+    background-color: #d2d2d2;
 }
 
 .imput_ {
@@ -130,44 +127,6 @@ table td {
     outline: none;
     width: 100%;
 }
-
-
-/* modal */
-
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    
-
-    width: 100vw;
-    height: 100dvh;
-
-    background-color: #00000034;
-    backdrop-filter: blur(10px);
-    display: none;
-
-    z-index: 100;
-
-    
-}
-
-.overlay.ative {
-    display: flex;
-}
-
-.modal {
-    background-color: #ffffff;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 1rem;
-
-    min-width: 200px;
-    border-radius: 10px;
-}
-
 
 /* finalizar pagamento */
 
@@ -193,90 +152,49 @@ table td {
     min-width: 130px;
 }
 
+.modal {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 0;
+    padding: 1rem;
 
-
-.print_area {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-
-    background-color: #00000059;
-    display: none;
-    justify-content: center;
-    align-items: center;
-
-}
-
-.print_area.ative {
-    display: flex;
-}
-
-.print_content {
-    background-color: var(--primaria);
     width: 300px;
-    min-height: 200px;
     border-radius: 10px;
-    padding: 10px;
-
-    max-height: 700px;
-    overflow: auto;
-   
 
 }
 
-.print_area {
-    font-size: .7rem;
+.modal::backdrop {
+    background-color: #00000044;
 }
 
-.print_content .header_print {
-    text-align: center;
-    font-size: .8rem;
+div.app_body {
+    view-timeline-name: page;
 }
 
-.print_content table {
-    font-size: .6rem;
+@keyframes saida {
+    to {
+        transform: translateX(-100%);
+    }
+}
+@keyframes entrando {
+    from {
+        transform: translateX(-100%);
+    }
 }
 
-.row_button div.button {
-    width: 100%;
-    flex: 1;
+@view-transition{
+    navigation: auto;
 }
 
-.box_image_preview {
-    width: 200px;
-    height: 120px;
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 1;
-    height: 200px;
+::view-transition-group(root) {
+    animation-duration: .3s;
 }
 
-.box_image_preview .img_content_preview {
-    width: 100%;
-    max-width: 80%;
-    height: 100%;
-    border-radius: 10px;
-    overflow: hidden;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
+::view-transition-old(page) {
+    animation-name: saida;
 }
 
-.box_image_preview .img_content_preview i {
-    font-size: 4rem;
+::view-transition-new(page){
+    animation-name: entrando;
 }
-
-.box_image_preview .img_content_preview  img {
-    height: 100%;
-    max-width: 100%;
-}
-
-.box_image_preview .button {
-    width: 80%;
-}
-

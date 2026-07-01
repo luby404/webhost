@@ -1,0 +1,114 @@
+{% extends 'leyout/base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<title>WebEvents - Dashboard</title>
+{% endblock %}
+
+{% block header_menu %}
+
+<a href="{{ url_for('route.logout' ) }}" class="button button2">
+    <i class="ri-logout-box-r-line"></i>
+    <span>Sair</span>
+</a>
+
+{% endblock %}
+
+{% block body %}
+
+<div class="row top_dh">
+    <div class="column">
+        <strong>Dashboard</strong>
+        <span class="text_size">Gerencie seus eventos</span>
+    </div>
+
+    <button class="button" commandFor="modal" command="show-modal">
+        <i class="ri-add-line"></i>
+        <span>Novo evento</span>
+    </button>
+</div>
+
+<div class="display_app">
+
+    <div class="view list_events_content">
+        <div class="list_events">
+            <a href="" class="event ative">
+                <span>Nome do evento</span>
+            </a>
+
+            {% for evento in range(10) %}
+            <a href="" class="event row2">
+                <i class="ri-webhook-line"></i>
+                <span>Nome do evento</span>
+            </a>
+            {% endfor %}
+
+        </div>
+    </div>
+    <div class="view column">
+
+        <div class="header_event row">
+            <div class="url">url do evento aparece aqui</div>
+            <div class="row2">
+                <a href="" class="button button2">
+                    <i class="ri-delete-bin-3-line"></i>
+                </a>
+                <a href="" class="button button2">
+                    <i class="ri-reset-right-line"></i>
+                </a>
+            </div>
+        </div>
+
+
+        <div class="event_details_list column">
+            {% for el in range(2) %}
+            <strong class="title_detalhes">Headers</strong>
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <td>chave</td>
+                            <td>Valor</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for key in range(3) %}
+                        <tr>
+                            <td>Api-key</td>
+                            <td>asdçasmdçalsmdlas dasmdaksndlasmdl asldasd</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+</div>
+
+
+<dialog id="modal" class="modal" role="dialog" aria-modal="true" aria-label="formLevel">
+
+    <div class="column">
+        <div class="row">
+            <strong>Nome do webhook</strong>
+            <button class="button button2" aria-label="close" commandFor="modal" command="close">
+                <i class="ri-close-line"></i>
+            </button>
+        </div>
+        <form action="" method="post" class="column">
+            <div class="entry">
+                <input type="text" placeholder="Nome do webhook" class="input">
+            </div>
+            <button class="button">
+                <span>Adicionar evento</span>
+            </button>
+        </form>
+    </div>
+
+</dialog>
+
+
+{% endblock %}

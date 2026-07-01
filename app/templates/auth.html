@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebEvents - Login</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+
+    {% block head %}
+
+    {% endblock %}
+
+</head>
+
+<body>
+
+    <div class="auth">
+        
+        <div class="form">
+
+            <form action="" class="column" method="post">
+                <div class="column">
+                    <strong>Entrar e gerenciar seu email</strong>
+                    <p>Use seu email para acessar seus webhook.</p>
+                </div>
+                <div class="entry column">
+                    <span>E-mail</span>
+                    <input type="email" placeholder="seu email" name="email" required>
+                </div>
+
+                <button class="button">
+                    <span>Entrar</span>
+                </button>
+
+                <div class="center column">
+                    <span>o email serve para identificar o usuario.</span>
+                    <div class="row2">
+                        <strong>Desenvolvidor por</strong>
+                        <a href="https://ricardocayoca.onrender.com/" target="_blank" class="link">Ricardo Cayoca</a>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

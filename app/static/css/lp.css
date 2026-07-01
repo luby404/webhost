@@ -1,0 +1,107 @@
+header {
+    position: sticky;
+    top: 0px;
+    backdrop-filter: blur(10px);
+    padding: 10px;
+
+    z-index: 99999;
+}
+
+.home {
+    min-height: 400px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    padding: 1rem;
+
+}
+
+.home h1 {
+    font-size: 5rem;
+}
+
+.sobre {
+    background-color: var(--secundaria);
+    color: var(--text2);
+    padding: 20px;
+    border-radius: 10px;
+
+    font-size: .8rem;
+    gap: 10px;
+}
+
+.atendenteo {
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.atendenteo .card_info {
+    border: 1px solid var(--secundaria);
+    padding: 2rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.carrocel {
+    overflow: hidden;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.carrocel_list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 20px;
+
+}
+
+.carrocel img {
+    width: 30px;
+    height: 30px;
+    animation: carrocel .2s linear infinite;
+
+}
+
+.image_banner {
+    max-width: 60%;
+    margin: 0 auto;
+}
+
+.gird_3 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+.text_center {
+    text-align: center;
+}
+
+@keyframes carrocel {
+    0% {
+        left: 0;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+@media (max-width: 700px) {
+    .home h1 {
+        font-size: 3.5rem;
+    }
+
+    .gird_3 {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

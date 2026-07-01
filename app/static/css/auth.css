@@ -1,9 +1,14 @@
+body {
+    background-color: var(--secundaria);
+}
+
 .auth {
     flex: 1;
     display: flex;
 
     justify-content: center;
     align-items: center;
+
     
 }
 
@@ -15,18 +20,20 @@
     align-items: start;
     
     max-width: 480px;
+
+    background-color: #FFF;
+    border-radius: 20px;
 }
 
 .form form {
     width: 90%;
+    gap: 20px;
     height: 100%;
-    max-height: 300px;
-    max-width: 350px;
 
 
     background-color: var(--primaria);
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 20px;
 
     display: flex;
     justify-content: center;
