@@ -9,8 +9,8 @@
 
 :root {
     --primaria:   #ffffff;
-    --secundaria: #430fa3;
-    --fundo:      #ffffffee;
+    --secundaria: #0cad19;
+    --fundo:      #ffffff;
     --gelo:       #d2d2d2; 
     --text:       #000000;
     --text2:      #FFF;
@@ -26,6 +26,8 @@ body {
     width: 100vw;
     height: 100dvh;
     padding: 1rem;
+
+    color: var(--text);
 
     
 }
@@ -112,7 +114,7 @@ table {
 
 table thead {
     font-weight: bold;
-    color: var(--secundaria);
+    color: var(--text);
     position: sticky;
     top: 0;
     left: 0;
@@ -124,7 +126,7 @@ table td {
     text-wrap: wrap;
 }
 table tr:nth-child(even){
-    background-color: #d2d2d2;
+    background-color: #d2d2d273;
 }
 
 .imput_ {
