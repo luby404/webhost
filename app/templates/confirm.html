@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebEvents - Login</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+
+    {% block head %}
+
+    {% endblock %}
+
+</head>
+
+<body>
+
+    <div class="auth">
+
+        <div class="form">
+
+            <form action="{{ url_for('route.create_account' ) }}" class="column" method="post">
+                <div class="column">
+                    <strong>Criar Conta?</strong>
+                    <p>O email fornecido nunca foi usado, criar conta?</p>
+                </div>
+                <div class="entry column">
+                    <span>E-mail</span>
+                    <input type="email" placeholder="seu email" name="email" value="{{ email }}" required>
+                </div>
+
+                <div class="row2">
+                    <a href="{{ url_for('route.login' ) }}" style="width: 100%;" class="button button3">
+                        <span>Não criar</span>
+                    </a>
+                    <button style="width: 100%;" class="button">
+                        <span>Sim criar</span>
+                    </button>
+                </div>
+
+                <div class="center column">
+                    <span>o email serve para identificar o usuario.</span>
+                    <div class="row2">
+                        <strong>Desenvolvidor por</strong>
+                        <a href="https://ricardocayoca.onrender.com/" target="_blank" class="link">Ricardo Cayoca</a>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
