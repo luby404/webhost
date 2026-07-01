@@ -62,7 +62,7 @@ def create_account():
 @route.get("/logout")
 @login_required
 def logout():
-
+    login_user()
     return redirect(url_for("route.login"))
 
 
