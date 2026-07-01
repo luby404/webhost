@@ -89,6 +89,12 @@ body {
     color: var(--secundaria);
 }
 
+.button3 {
+    background-color: var(--primaria);
+    color: var(--secundaria);
+    box-shadow: 0 0 10px -2px var(--secundaria);
+}
+
 .table {
     position: relative;
 
