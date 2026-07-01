@@ -37,7 +37,7 @@ def login():
 
             user:Usuario = Usuario.get_or_none(Usuario.email == email)
             if user:
-                login(user)
+                login_user(user)
                 flash("Usuario Logado com sucesso")
                 return redirect(url_for("route.dashboard"))
             else:
