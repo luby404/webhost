@@ -121,6 +121,7 @@ table thead {
 
 table td {
     padding: 10px;
+    text-wrap: wrap;
 }
 table tr:nth-child(even){
     background-color: #d2d2d2;
@@ -155,7 +156,6 @@ table tr:nth-child(even){
     background-color: #33333338;
     border-radius: 10px;
     width: 100%;
-    min-width: 130px;
 }
 
 .modal {
@@ -165,9 +165,19 @@ table tr:nth-child(even){
     border: 0;
     padding: 1rem;
 
-    width: 300px;
+    width: 80%;
+    height: 80%;
+
+    max-width: 800px;
+    max-height: 600px;
     border-radius: 10px;
 
+}
+
+.text_area {
+    resize: none;
+    height: 200px;
+    padding: 10px;
 }
 
 .modal::backdrop {

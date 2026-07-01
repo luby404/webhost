@@ -10,9 +10,11 @@ from datetime import datetime, timedelta
 from flask_login import login_user, current_user, logout_user, login_required
 
 from app.models import Usuario, Evento
+import secrets, json
 
 route = Blueprint("route", __name__)
 
+current_user:Usuario
 
 @route.get("/")
 def index():
@@ -22,9 +24,18 @@ def index():
 @route.get("/dashboard/<id>")
 @login_required
 def dashboard(id:str=""):
-    """ Retorna a pagina com a lista dos webhook ou a pagina com os detalhes do webhooks """
 
-    return render_template("dashboard.html")
+    evento:Evento = Evento.get_or_none(Evento.pub_id == id)
+
+    class dados:
+        event_id        = evento.pub_id if evento else None
+        eventos_names   = [i for i in Evento.select().where(Evento.usuario == current_user)]
+        eventos_names.reverse()
+        evento_detalhes = json.loads(evento.data) if evento else {}
+
+        url_evento      = str(request.host_url + url_for("route.webhook", id=current_user.pub_id)).replace("//", "/")
+
+    return render_template("dashboard.html", dados=dados)
 
 
 
@@ -62,11 +73,31 @@ def create_account():
 @route.get("/logout")
 @login_required
 def logout():
-    login_user()
+    logout_user()
     return redirect(url_for("route.login"))
 
 
 @route.route("/webhook/<id>/event", methods=["GET", "POST", "PUT", "DELET"])
-def webhook():
+def webhook(id):
 
-    return {"message", "webhook recebido com sucesso"}
+    user:Usuario = Usuario.get_or_none(Usuario.pub_id == id)
+    if user:
+        nome  = request.headers.get("Host", secrets.token_urlsafe(16)) + f" {request.method}"
+        event = request.json if request.is_json else {}
+        
+        try:
+            data = dict(
+                headers={k:v for k,v in request.headers.items()},
+                body=json.loads(json.dumps(event)),
+            )
+            event:Evento = Evento.create(
+                usuario=user,
+                nome=nome,
+                data=json.dumps(data)
+            )
+            print("Novo Evento gerado")
+        except Exception as e:
+            print("Ouve um Erro", e)
+            return {"message":"Erro ao processar webhook"}, 500
+        
+    return {"message":"webhook recebido com sucesso"}, 200

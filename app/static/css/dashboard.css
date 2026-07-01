@@ -22,6 +22,7 @@
     flex-direction: column;
     gap: 10px;
     padding-right: 10px;
+    min-width: 200px;
 }
 
 .list_events .event {
@@ -48,6 +49,8 @@
     max-height: calc(100dvh - 200px);
     height: calc(100dvh - 200px);
     position: relative;
+
+    max-width: 770px;
 }
 
 .event_details_list .title_detalhes {

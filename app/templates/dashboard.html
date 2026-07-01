@@ -24,7 +24,7 @@
 
     <button class="button" commandFor="modal" command="show-modal">
         <i class="ri-add-line"></i>
-        <span>Novo evento</span>
+        <span>Enviar Evento</span>
     </button>
 </div>
 
@@ -32,14 +32,10 @@
 
     <div class="view list_events_content">
         <div class="list_events">
-            <a href="" class="event ative">
-                <span>Nome do evento</span>
-            </a>
-
-            {% for evento in range(10) %}
-            <a href="" class="event row2">
+            {% for evento in dados.eventos_names %}
+            <a href="{{ url_for('route.dashboard', id=evento.pub_id ) }}" class="event row2">
                 <i class="ri-webhook-line"></i>
-                <span>Nome do evento</span>
+                <span>{{ evento.nome }}</span>
             </a>
             {% endfor %}
 
@@ -48,11 +44,8 @@
     <div class="view column">
 
         <div class="header_event row">
-            <div class="url">url do evento aparece aqui</div>
+            <div class="url">{{ dados.url_evento }}</div>
             <div class="row2">
-                <a href="" class="button button2">
-                    <i class="ri-delete-bin-3-line"></i>
-                </a>
                 <a href="" class="button button2">
                     <i class="ri-reset-right-line"></i>
                 </a>
@@ -61,8 +54,9 @@
 
 
         <div class="event_details_list column">
-            {% for el in range(2) %}
-            <strong class="title_detalhes">Headers</strong>
+            {% for el, data in dados.evento_detalhes.items() %}
+            <hr>
+            <strong class="title_detalhes">{{ el }}</strong>
             <div class="table">
                 <table>
                     <thead>
@@ -72,12 +66,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for key in range(3) %}
+                        {% for key, value in data.items() %}
                         <tr>
-                            <td>Api-key</td>
-                            <td>asdçasmdçalsmdlas dasmdaksndlasmdl asldasd</td>
+                            <td>{{ key }}</td>
+                            <td>{{ value }}</td>
                         </tr>
                         {% endfor %}
+
                     </tbody>
                 </table>
             </div>
@@ -93,22 +88,63 @@
 
     <div class="column">
         <div class="row">
-            <strong>Nome do webhook</strong>
+            <strong>Enviar Evento</strong>
             <button class="button button2" aria-label="close" commandFor="modal" command="close">
                 <i class="ri-close-line"></i>
             </button>
         </div>
         <form action="" method="post" class="column">
-            <div class="entry">
-                <input type="text" placeholder="Nome do webhook" class="input">
+            <div class="row2">
+                <div class="entry">
+                    <input type="url" placeholder="Url de destino" name="nome" class="input">
+                </div>
+                <div class="entry" style="width: 100px;">
+                    <select name="method" id="" class="input">
+                        <option value="GET">get</option>
+                        <option value="POST">post</option>
+                        <option value="PUT">put</option>
+                        <option value="DELETE">delete</option>
+                    </select>
+                </div>
+                <button class="button">
+                    <span>Enviar</span>
+                </button>
             </div>
-            <button class="button">
-                <span>Adicionar evento</span>
-            </button>
+
+            <div class="row2">
+
+                <div class="entry column">
+                    <strong>Headers</strong>
+                    <textarea name="header" id="" class="text_area" placeholder="Header da requisição">{}</textarea>
+                </div>
+                <div class="entry column">
+                    <strong>Body</strong>
+                    <textarea name="body" id="" class="text_area" placeholder="Corpo da requisição">{}</textarea>
+                </div>
+            </div>
+            <div class="entry column">
+                <strong>Response</strong>
+                <textarea name="response" id="" class="text_area" placeholder="Resposta da requisição"></textarea>
+            </div>
+
+
         </form>
     </div>
 
 </dialog>
 
+<script>
+    document.querySelectorAll(".list_events .event").forEach((el) => {
+        el.classList.remove("ative")
+    })
+
+    document.querySelectorAll(".list_events .event").forEach((el) => {
+
+        if (window.location.pathname == el.getAttribute("href")) el.classList.add("ative")
+
+    })
+
+
+</script>
 
 {% endblock %}
