@@ -1,5 +1,9 @@
-from .ext.database import orm, Model, db
+import uuid
+
 from flask_login import UserMixin
+
+from .ext.database import orm, Model, db
+
 
 class Usuario(Model, UserMixin):
     email = orm.CharField(max_length=256, unique=True)
