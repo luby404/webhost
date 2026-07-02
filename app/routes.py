@@ -55,7 +55,7 @@ def login():
                 return render_template("confirm.html", email=email)
         else:
             flash("Requisição invalida.")
-    
+
     return render_template("auth.html")
 
 @route.post("/create_account")
@@ -77,14 +77,14 @@ def logout():
     return redirect(url_for("route.login"))
 
 
-@route.route("/webhook/<id>/event", methods=["GET", "POST", "PUT", "DELET"])
+@route.route("/webhook/<id>/event", methods=["GET", "POST", "PUT", "DELETE", "PATCH"])
 def webhook(id):
 
     user:Usuario = Usuario.get_or_none(Usuario.pub_id == id)
     if user:
         nome  = request.headers.get("Host", secrets.token_urlsafe(16)) + f" {request.method}"
         event = request.json if request.is_json else {}
-        
+
         try:
             data = dict(
                 headers={k:v for k,v in request.headers.items()},
@@ -99,5 +99,5 @@ def webhook(id):
         except Exception as e:
             print("Ouve um Erro", e)
             return {"message":"Erro ao processar webhook"}, 500
-        
+
     return {"message":"webhook recebido com sucesso"}, 200
