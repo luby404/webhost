@@ -54,29 +54,37 @@
 
 
         <div class="event_details_list column">
-            {% for el, data in dados.evento_detalhes.items() %}
-            <hr>
-            <strong class="title_detalhes">{{ el }}</strong>
-            <div class="table">
-                <table>
-                    <thead>
-                        <tr>
-                            <td>chave</td>
-                            <td>Valor</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for key, value in data.items() %}
-                        <tr>
-                            <td>{{ key }}</td>
-                            <td>{{ value }}</td>
-                        </tr>
-                        {% endfor %}
+            {% if dados.evento_detalhes %}
 
-                    </tbody>
-                </table>
-            </div>
-            {% endfor %}
+                {% for section in ["headers", "body"] %}
+
+                    {% if dados.evento_detalhes.get(section) %}
+                        <hr>
+                        <strong class="title_detalhes">{{ section }}</strong>
+
+                        <div class="table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td>Chave</td>
+                                        <td>Valor</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for key, value in dados.evento_detalhes[section].items() %}
+                                        <tr>
+                                            <td>{{ key }}</td>
+                                            <td>{{ value }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% endif %}
+
+                {% endfor %}
+
+            {% endif %}
         </div>
 
     </div>
